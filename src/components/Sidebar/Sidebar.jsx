@@ -1,4 +1,3 @@
-import './sidebar.scss';
 import React from 'react';
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -37,7 +36,13 @@ export default class Sidebar extends React.Component {
 
     render() {
         const { isOpened } = this.state;
-        const containerClassnames = classnames('sidebar', { opened: isOpened });
+        const { theme } = this.props;
+        const containerClassnames = classnames(
+            'sidebar',
+            { opened: isOpened},
+            theme  ? "light-sidebar" : "dark-sidebar",
+            isOpened ? "sidebar-open" : "sidebar-closed"
+        );
 
         return (
             <div className={ containerClassnames }>
@@ -46,8 +51,10 @@ export default class Sidebar extends React.Component {
                         src={ logo }
                         alt="TensorFlow logo"
                     />
-                    <span>TensorFlow</span>
-                    <button onClick={ this.toggleSidebar }>
+                    {
+                        isOpened ? <span>TensorFlow</span> : null
+                    }
+                    <button onClick={ this.toggleSidebar } className="logo" >
                         <FontAwesomeIcon icon={ isOpened ? 'angle-left' : 'angle-right' } />
                     </button>
                 </div>
@@ -57,7 +64,10 @@ export default class Sidebar extends React.Component {
                         routes.map((route) => (
                             <div key={ route.title } onClick={ () => this.goToRoute(route.path) }>
                                 <FontAwesomeIcon icon={ route.icon } />
-                                <span>{ route.title }</span>
+                                {
+                                    isOpened ? <span>{route.title}</span> : null
+                                }
+                                <span className="hover-title">{route.title}</span>
                             </div>
                         ))
                     }
@@ -66,9 +76,12 @@ export default class Sidebar extends React.Component {
                 <div>
                     {
                         bottomRoutes.map((route) => (
-                            <div key={ route.title } onClick={ () => this.goToRoute(route.path) }>
-                                <FontAwesomeIcon icon={ route.icon } />
-                                <span>{ route.title }</span>
+                            <div key={route.title} onClick={() => this.goToRoute(route.path)} >
+                                <FontAwesomeIcon icon={route.icon}/>
+                                {
+                                    isOpened ? <span>{route.title}</span> : null
+                                }
+                                <span className={"hover-title"}>{route.title}</span>
                             </div>
                         ))
                     }

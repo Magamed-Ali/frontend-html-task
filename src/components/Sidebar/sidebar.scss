@@ -1,0 +1,153 @@
+@import "../../styles/variable-styles";
+
+.sidebar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  color: $Grey-color;
+  font-family: "Helvetica";
+  font-weight: 500;
+  box-sizing: border-box;
+  top: 5%;
+  left: 50px;
+
+  div > div {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    height: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    span {
+      margin-left: 20px;
+      padding: 8px;
+    }
+  }
+
+  & > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+
+    img {
+      width: 36px;
+      padding: 0 5px;
+    }
+  }
+
+  & > div:nth-child(3) {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+  }
+
+  .hover-title {
+    display: none;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.sidebar-closed {
+  max-width: 60px;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+
+  .logo {
+    position: absolute;
+    border-radius: 50%;
+    padding: 10px;
+    border: none;
+    right: -50px;
+  }
+
+  div > div {
+
+    &:hover {
+      .hover-title {
+        display: block;
+        padding: 5px 10px;
+        background: rgb(0, 109, 255);
+        color: $White-color;
+        border-radius: 12px;
+      }
+    }
+  }
+}
+
+.sidebar-open {
+  max-width: 220px;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+
+  div > span {
+    overflow: hidden;
+  }
+
+  .logo {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px 2px $Light-Blue;
+    padding: 10px;
+    border: none;
+    right: -15px;
+    z-index: 99;
+  }
+}
+
+.dark-sidebar {
+  background: $Midnight-Blue;
+  border: 1px solid $Dark-Blue;
+  border-radius: 15px;
+  box-shadow: 0px 0px 3px 2px $Gunmetal-Blue;
+
+  div > div {
+    &:hover {
+      transition: 0.5s;
+      color: $Cadet-Blue;
+      background: $Steel-Blue;
+    }
+
+    &:active {
+      color: $White-color;
+      background: $Dark-Imperial-Blue;
+    }
+
+  }
+
+  .logo {
+    color: $White-color;
+    box-shadow: 0px 0px 3px 2px $Gunmetal-Blue;
+    background: $Midnight-Blue;
+  }
+}
+
+.light-sidebar {
+  background: $White-color;
+  border: 1px solid $Slate-Gray;
+  border-radius: 15px;
+  box-shadow: 0px 0px 3px 2px $Slate-Gray;
+
+  div > div {
+    &:hover {
+      transition: 0.5s;
+      color: $White-color;
+      background: $Ash-Gray;
+    }
+
+    &:active {
+      color: $Dodger-Blue;
+      background: $Cadet-Blue;
+    }
+  }
+}
+
