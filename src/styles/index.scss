@@ -1,0 +1,24 @@
+@import "./components/Sidebar/variable-styles";
+@import "./components/Sidebar/sidebar";
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  background: #95b9b0;
+}
+
+.app-light {
+  background: #b8cdda;
+}
+
+.app-dark {
+  background: rgba(3, 16, 42, 0.92);
+
+
+}
